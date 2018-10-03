@@ -1,23 +1,29 @@
 package co.proteus.java;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 interface Java9Interface {
+    default void defaultSomething1() {
+        IAmPrivate(); // Shared code
+    }
+    default void defaultSomething2() {
+        IAmPrivate(); // Shared code
+    }
     private void IAmPrivate() {
         System.out.println("I am private");
     }
 }
 
 @SuppressWarnings({"DeprecatedIsStillUsed", "SameParameterValue"})
-public class Java9 {
+public class Java9 implements Java9Interface {
 
     // BIG FEATURE - Modularity
 
